@@ -1,17 +1,50 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+    <div class="counter">
+      {{ storeCounter.counter }}
+    </div>
+    <hr>
+    <div class="counter">
+      {{ storeCounter.evenOrOdd }}
+    </div>
+    <div class="buttons">
+      <button @click="storeCounter.decrement">-</button>
+      <button @click="storeCounter.increment">+</button>
+    </div>
+    <div class="modifier">
+      <h3>Change counter:</h3>
+      <input type="number" v-model="storeCounter.counter">
+    </div>
   </q-page>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { QPage } from 'quasar'
+import { useCounterStore } from "../stores/counter"
+import { useLocalStorage } from "@vueuse/core"
 
-export default defineComponent({
-  name: 'IndexPage'
-})
+const storeCounter = useCounterStore();
 </script>
+
+<style>
+.counter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  padding: 20px;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 60px;
+}
+
+.buttons button {
+  margin: 20px;
+  width: 100px;
+}
+</style>

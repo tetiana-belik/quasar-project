@@ -111,7 +111,6 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      base: '/quasar-project/',
       plugins: []
     },
 

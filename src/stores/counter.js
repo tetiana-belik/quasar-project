@@ -6,10 +6,14 @@ export const useCounterStore = defineStore('counter', {
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,
+    evenOrOdd: (state) => state.counter % 2 === 0 ? 'even' : 'odd'
   },
   actions: {
     increment() {
       this.counter++;
+    },
+    decrement() {
+      this.counter--;
     },
   },
 });
